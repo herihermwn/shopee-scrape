@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+
+    <title>Argon - Shipping Cost</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='img/brand/favicon.png') }}" type="image/png">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/nucleo/css/nucleo.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/@fortawesome/fontaweso me-free/css/all.min.css') }}" type="text/css">
+    
+    <!-- Page plugins -->
+    
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/argon.css') }}" type="text/css">
+</head>
+
+<body>
+    <!-- Sidenav -->
+    <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+        <div class="scrollbar-inner">
+            <!-- Brand -->
+            <div class="sidenav-header  align-items-center">
+                <a class="navbar-brand" href="javascript:void(0)">
+                    <img src="{{ url_for('static', filename='img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
+                </a>
+            </div>
+            <div class="navbar-inner">
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                    <!-- Nav items -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('search_item') }}">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Search Item</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for('list_item') }}">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Item List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="main-content" id="panel">
+        <!-- Header -->
+        <div class="header bg-primary pb-6">
+            <div class="container-fluid">
+                <div class="header-body">
+                    <div class="row align-items-center py-4">
+                        <div class="col-lg-8">
+                            <h6 class="h2 text-white d-inline-block mb-0">List Item</h6>
+                            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">List Item</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page content -->
+        <div class="container-fluid mt--6">            
+            <div class="row" id="shipping-summary">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header border-0 pb-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Item List</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table witdh="100%" class="table table-striped" id="table-service">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Service Name</th>
+                                            <th scope="col">Code</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Cost</th>
+                                            <th scope="col">Estimate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tes</td>
+                                            <td>Tes</td>
+                                            <td>Tes</td>
+                                            <td>Tes</td>
+                                            <td>Tes</td>
+                                        </tr>
+                                        {% for item in items %}
+                                            <tr>
+                                                <td>{{ item['name'] }}</td>
+                                                <td>{{ item['name'] }}</td>
+                                                <td>{{ item['name'] }}</td>
+                                                <td>{{ item['name'] }}</td>
+                                                <td>{{ item['name'] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core -->
+    <script src="{{ url_for('static',filename='vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='vendor/js-cookie/js.cookie.js') }}"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+    
+    <!-- Argon JS -->
+    <script src="{{ url_for('static',filename='js/argon.js') }}"></script>
+
+    <script>
+        $.ajax({
+            url: 'api/city.php',
+            type: 'GET'
+        }).done(function (data) {
+            var origin = '<optgroup label="Kota">'
+            var suborigin = '<optgroup label="Kabupaten">'
+
+            var result = JSON.parse(data).rajaongkir.results
+
+            result.map(item => {
+                if (item.type == 'Kabupaten') {
+                    suborigin += `<option value="S-${item.city_id}">${item.city_name}</option>`
+                } else {
+                    origin += `<option value="D-${item.city_id}">${item.city_name}</option>`
+                }
+            })
+
+            origin += '</optgroup>'
+            suborigin += '</optgroup>'
+
+            $('#origin').html(origin)
+            $('#origin').append(suborigin)
+            $('#destination').html(origin)
+            $('#destination').append(suborigin)
+        }).fail(function (error) {
+            console.log(error)
+        })
+
+        $(function () {
+            $('#btn-submit').click(function () {
+                let origin = $('#origin').val()
+                let destination = $('#destination').val()
+                let weight = $('#weight').val()
+                let courier = $('#courier').val()
+
+                $.ajax({
+                    url: 'api/cost.php',
+                    type: 'GET',
+                    data: {
+                        origin: origin,
+                        destination: destination,
+                        weight: weight,
+                        courier: courier
+                    }
+                }).done(function (data) {
+                    var result = JSON.parse(data)
+                    var origin = result.rajaongkir.origin_details
+                    var destination = result.rajaongkir.destination_details
+
+                    $('#origin_city').text(origin.city_name)
+                    $('#origin_type').text(origin.type)
+                    $('#origin_province').text(origin.province)
+                    $('#origin_postal').text(origin.postal_code)
+                    $('#destination_city').text(destination.city_name)
+                    $('#destination_type').text(destination.type)
+                    $('#destination_province').text(destination.province)
+                    $('#destination_postal').text(destination.postal_code)
+
+                    var res = result.rajaongkir.results
+                    var costs = res[0].costs
+                    var dataLength = costs.length
+                    var row = null
+
+                    if (dataLength > 0) {
+                        row = '<tr>'
+                        row += `<th class="align-middle" scope="row" rowspan="${dataLength}">${res[0].name}</th>`
+                        row += `<td class="text-center align-middle" rowspan="${dataLength}">${res[0].code.toUpperCase()}</td>`
+                        row += `<td>${costs[0].service} (${costs[0].description})</td>`
+                        row += `<td>Rp. ${costs[0].cost[0].value}</td>`
+                        row += `<td>${costs[0].cost[0].etd} Days</td>`
+                        row += '</tr>'
+    
+                        if (dataLength > 1) {
+                            for (let i = 1; i < dataLength; i++) {
+                                row += `<tr>`
+                                row += `<td>${costs[i].service} (${costs[i].description})</td>`
+                                row += `<td>Rp. ${costs[i].cost[0].value}</td>`
+                                row += `<td>${costs[i].cost[0].etd} Days</td>`
+                                row += '</tr>'
+                            }
+                        }
+                    }
+
+                    if (row == null) {
+                        row = '<tr>'
+                        row += '<td colspan="5" class="text-center">Service not available.</td>'
+                        row += '</tr>'
+                    }
+
+                    $('#table-service tbody').html(row)
+                    $('#shipping-summary').removeClass('d-none')
+                }).fail(function (error) {
+                    console.log(error)
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
