@@ -1,0 +1,64 @@
+2021-06-22 20:02:34 [scrapy.utils.log] INFO: Scrapy 2.5.0 started (bot: scrapybot)
+2021-06-22 20:02:34 [scrapy.utils.log] INFO: Versions: lxml 4.6.3.0, libxml2 2.9.10, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 18.9.0, Python 3.8.5 (default, May 27 2021, 13:30:53) - [GCC 9.3.0], pyOpenSSL 20.0.1 (OpenSSL 1.1.1k  25 Mar 2021), cryptography 3.4.7, Platform Linux-5.4.0-73-generic-x86_64-with-glibc2.29
+2021-06-22 20:02:34 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.epollreactor.EPollReactor
+2021-06-22 20:02:34 [scrapy.crawler] INFO: Overridden settings:
+{'LOG_FILE': 'logs/logs-2021-06-22 20:02:34.464071.txt'}
+2021-06-22 20:02:34 [scrapy.extensions.telnet] INFO: Telnet Password: fa3adf1e48f349a1
+2021-06-22 20:02:34 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2021-06-22 20:02:34 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2021-06-22 20:02:34 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2021-06-22 20:02:34 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2021-06-22 20:02:34 [scrapy.core.engine] INFO: Spider opened
+2021-06-22 20:02:34 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2021-06-22 20:02:34 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2021-06-22 20:02:34 [py.warnings] WARNING: /home/hecolab/.local/lib/python3.8/site-packages/scrapy/core/downloader/contextfactory.py:54: DeprecationWarning: Passing method to twisted.internet.ssl.CertificateOptions was deprecated in Twisted 17.1.0. Please use a combination of insecurelyLowerMinimumTo, raiseMinimumTo, and lowerMaximumSecurityTo instead, as Twisted will correctly configure the method.
+  return CertificateOptions(
+
+2021-06-22 20:02:35 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://shopee.co.id/api/v4/search/search_items?by=relevancy&keyword=kabel+usb&limit=100&newest=0&official_mall=1&order=desc&page_type=search&scenario=PAGE_MALL_SEARCH&version=2> (referer: None)
+2021-06-22 20:02:35 [scrapy.core.engine] INFO: Closing spider (finished)
+2021-06-22 20:02:35 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 368,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 81808,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 0.666197,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2021, 6, 22, 13, 2, 35, 378964),
+ 'httpcompression/response_bytes': 368677,
+ 'httpcompression/response_count': 1,
+ 'log_count/DEBUG': 1,
+ 'log_count/INFO': 10,
+ 'log_count/WARNING': 2,
+ 'memusage/max': 50782208,
+ 'memusage/startup': 50782208,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2021, 6, 22, 13, 2, 34, 712767)}
+2021-06-22 20:02:35 [scrapy.core.engine] INFO: Spider closed (finished)
+2021-06-22 20:02:35 [root] INFO: Success
