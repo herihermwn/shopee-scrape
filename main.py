@@ -100,12 +100,6 @@ if __name__ == '__main__':
 
         return template('item', items=items)
 
-    @app.post('/items/<item_id:int>/delete')
-    def destroy(item_id):
-        db.items.delete_one({'item_id':item_id})
-
-        redirect("/items")
-
     @app.post('/items/create')
     def create():
         item = {
@@ -121,5 +115,11 @@ if __name__ == '__main__':
         db.items.insert_one(item)
 
         redirect("/")
+
+    @app.post('/items/<item_id>/delete')
+    def destroy(item_id):
+        db.items.delete_one({'item_id':item_id})
+
+        redirect("/items")
 
     app.run(host=API_HOST, port=API_PORT, debug=API_DEBUG)
