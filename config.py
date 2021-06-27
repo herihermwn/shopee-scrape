@@ -1,28 +1,3 @@
-class Config(object):
-    """
-    Common configurations
-    """
-
-    # Put any configurations here that are common across all environments
-
-
-class DevelopmentConfig(Config):
-    """
-    Development configurations
-    """
-
-    DEBUG = True
-    TESTING = True
-
-
-class ProductionConfig(Config):
-    """
-    Production configurations
-    """
-
-    DEBUG = False
-
-app_config = {
-    'development': DevelopmentConfig,
-    'production': ProductionConfig
-}
+API_HOST = '127.0.0.1'
+API_PORT = 5000
+API_DEBUG = True
